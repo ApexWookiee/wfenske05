@@ -1,0 +1,66 @@
+---
+title: "Map_Project"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r,echo = FALSE, message = FALSE, warnings = FALSE}
+library(tidyverse)
+library(mdsr)
+library(poliscidata)
+library(maps)
+```
+
+```{r, echo = FALSE, message = FALSE, results = 'hide'}
+# data importing and tidying
+us_states <- map_data("state")
+
+us_states <- us_states %>%
+  mutate(
+    region = str_squish(as.character(region)),
+    region = gsub(" ","", region)
+  )
+
+terror <- read_csv("terror2.csv")
+
+terror <- as_tibble(terror, .name_repair = c("unique"), validate = NULL)
+
+terror2 <- terror %>%
+  drop_na(country_txt, ) %>%
+  filter(country_txt == "United States") %>%
+  mutate(
+    region = str_to_lower(region),
+    region = str_squish(as.character(region)),
+    region = gsub(" ", "", region),
+    killHurtRatio = nkill / nwound 
+  ) %>%
+group_by(region) %>%
+  summarise(
+    n = n_distinct(eventid)
+  ) %>%
+  full_join(us_states, by = "region")
+```
+
+```{r, echo = FALSE, results = 'hide', warnings = FALSE, eval = TRUE}
+#plotting terrorist attacks frequency by state
+
+terror2 %>%
+  ggplot(aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = n), color = "black", size = 0.1) +
+  scale_fill_viridis_c() +
+  labs(
+    fill = "Count"
+    ) +
+  ggtitle("Frequency of Terrorist Attacks from 1970 to 2016") +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(legend.position = "left")
+```
+
+# What Can We Learn from this Map?
+
+It is no surprise that the the most populous states also have the most terrorist attacks, especially California and New York. However, even states like Florida and Texas do not have as many as CA and NY. This is interesting, suggesting that terrorism may not be a symptom of a larger population but rather something else. Maybe it is economic power or perhaps connection to countries overseas, both of which are strong in NY and CA. Perhaps it also has something to do with the fact that NY and CA are very much symbols of what America stands for.
+
+Additionally, there is a large absence of terrorist attacks in the the non coastal states with the exception of Illinois. It is possible that total population does not matter as much, rather the concentration of the population is what matters. Big cities like Los Angeles, Chicago, Seattle, NYC, etc., are definitely attractive targets for potential attackers.
