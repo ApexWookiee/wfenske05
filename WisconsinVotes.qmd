@@ -23,6 +23,7 @@ library(prettymapr)
 ```{r}
 #| echo: FALSE
 #| warning: FALSE
+#| message: FALSE
 
 votes <- results_house
 
@@ -59,6 +60,7 @@ wi_results %>%
 ```{r}
 #| echo: FALSE
 #| warning: FALSE
+#| message: FALSE
 
 # Download congressional district shapefiles for the 113th Congress from a UCLA website (don't sweat the details too much)
 src <- "http://cdmaps.polisci.ucla.edu/shp/districts113.zip"
@@ -78,6 +80,7 @@ st_layers(dsn_districts)
 ```{r}
 #| echo: FALSE
 #| warning: FALSE
+#| message: FALSE
 
 # be able to read as a data frame as well
 districts <- st_read(dsn_districts, layer = "districts113") |>
@@ -87,6 +90,7 @@ districts <- st_read(dsn_districts, layer = "districts113") |>
 ```{r}
 #| echo: FALSE
 #| warning: FALSE
+#| message: FALSE
 
 # create basic plot with WI congressional districts
 wi_shp <- districts |>
@@ -99,6 +103,7 @@ wi_shp |>
 ```{r}
 #| echo: FALSE
 #| warning: FALSE
+#| message: FALSE
 
 # Append election results to geospatial data
 wi_merged <- wi_shp |>
@@ -110,6 +115,7 @@ head(wi_merged, width = Inf)
 ```{r}
 #| echo: FALSE
 #| warning: FALSE
+#| message: FALSE
 
 # Color based on winning party
 #   Note that geom_sf is part of ggplot2 package, while st_geometry is
