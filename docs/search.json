@@ -1,9 +1,30 @@
 [
   {
+    "objectID": "WisconsinVotes.html",
+    "href": "WisconsinVotes.html",
+    "title": "WisconsinVotes",
+    "section": "",
+    "text": "# A tibble: 1 × 5\n  d_total r_total total_votes_sum prop_r prop_d\n    &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 1445015 1401995         2862367  0.490  0.505\n\n\n\n\nDriver: ESRI Shapefile \nAvailable layers:\n    layer_name geometry_type features fields crs_name\n1 districts113       Polygon      436     15    NAD83\n\n\n\n\nReading layer `districts113' from data source \n  `C:\\Users\\Walter\\AppData\\Local\\Temp\\RtmpEJggK3\\districts113\\districtShapes' \n  using driver `ESRI Shapefile'\nSimple feature collection with 436 features and 15 fields (with 1 geometry empty)\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -179.1473 ymin: 18.91383 xmax: 179.7785 ymax: 71.35256\nGeodetic CRS:  NAD83\n\n\n\n\n\n\n\n\n\nSimple feature collection with 6 features and 22 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -92.808 ymin: 42.49198 xmax: -87.50719 ymax: 45.20957\nGeodetic CRS:  WGS 84\n  STATENAME           ID DISTRICT STARTCONG ENDCONG DISTRICTSI COUNTY PAGE  LAW\n1 Wisconsin 055113114001        1       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;\n2 Wisconsin 055113114002        2       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;\n3 Wisconsin 055113114003        3       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;\n4 Wisconsin 055113114004        4       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;\n5 Wisconsin 055113114005        5       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;\n6 Wisconsin 055113114006        6       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;\n  NOTE BESTDEC                  FINALNOTE RNOTE                 LASTCHANGE\n1 &lt;NA&gt;    &lt;NA&gt; {\"From US Census website\"}  &lt;NA&gt; 2016-05-29 16:44:10.857626\n2 &lt;NA&gt;    &lt;NA&gt; {\"From US Census website\"}  &lt;NA&gt; 2016-05-29 16:44:10.857626\n3 &lt;NA&gt;    &lt;NA&gt; {\"From US Census website\"}  &lt;NA&gt; 2016-05-29 16:44:10.857626\n4 &lt;NA&gt;    &lt;NA&gt; {\"From US Census website\"}  &lt;NA&gt; 2016-05-29 16:44:10.857626\n5 &lt;NA&gt;    &lt;NA&gt; {\"From US Census website\"}  &lt;NA&gt; 2016-05-29 16:44:10.857626\n6 &lt;NA&gt;    &lt;NA&gt; {\"From US Census website\"}  &lt;NA&gt; 2016-05-29 16:44:10.857626\n  FROMCOUNTY N total_votes d_votes r_votes other_votes    r_prop     winner\n1          F 3      364891  158414  200423        6054 0.5492681 Republican\n2          F 6      390111  265422  124683           6 0.3196090   Democrat\n3          F 2      339425  217712  121713           0 0.3585858   Democrat\n4          F 3      325321  235257   80787        9277 0.2483301   Democrat\n5          F 2      368813  118478  250335           0 0.6787586 Republican\n6          F 3      359381  135921  223460           0 0.6217914 Republican\n                        geometry\n1 MULTIPOLYGON (((-89.08072 4...\n2 MULTIPOLYGON (((-90.43 43.1...\n3 MULTIPOLYGON (((-91.3984 44...\n4 MULTIPOLYGON (((-88.06601 4...\n5 MULTIPOLYGON (((-89.01359 4...\n6 MULTIPOLYGON (((-89.78555 4...\n\n\n\n\nWarning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not\ngive correct results for longitude/latitude data\n\n\n\n\n\n\nGerrymandering?\nWhen one looks at a map, one expects that Democrats should win about half of the seats and that Republicans should win the other half. However, this is not the case. Instead, this map tells us that Republicans won 5 of 8 available districts with democrats claiming the remaining 3. Gerrymandering is hard to explicitly prove, but intuition tells us that something is off. It is for this reason that we might create these kinds of maps before moving to rigorous statistical methods to tell us if something is unexpected."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "temp_webpage",
+    "title": "wfenske05",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Map_Project.html",
+    "href": "Map_Project.html",
+    "title": "Map_Project",
+    "section": "",
+    "text": "Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n\n\n\n\nWhat Can We Learn from this Map?\nIt is no surprise that the the most populous states also have the most terrorist attacks, especially California and New York. However, even states like Florida and Texas do not have as many as CA and NY. This is interesting, suggesting that terrorism may not be a symptom of a larger population but rather something else. Maybe it is economic power or perhaps connection to countries overseas, both of which are strong in NY and CA. Perhaps it also has something to do with the fact that NY and CA are very much symbols of what America stands for.\nAdditionally, there is a large absence of terrorist attacks in the the non coastal states with the exception of Illinois. It is possible that total population does not matter as much, rather the concentration of the population is what matters. Big cities like Los Angeles, Chicago, Seattle, NYC, etc., are definitely attractive targets for potential attackers."
   }
 ]
