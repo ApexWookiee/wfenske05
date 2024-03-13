@@ -8,21 +8,28 @@ website:
     background: primary
     search: true
     left:
-      - text: "Home"
-        file: index.qmd
-      - text: "Mini Project 1 - US Data"
-        file: Map_Project.qmd
-      - text: "Mini Project 1 - Wisconsin"
-        file: WisconsinVotes.qmd
-      - text: "About This Page"
-        file: about.qmd
+      - sidebar:mini_project
+      - file: index.qmd
+        text: "Home"
+      - file: about.qmd
+        text: "About"
+        
+  sidebar:
+    - id: mini_project
+      title: "Mini Project 1"
+      contents:
+        - Map_Project.qmd
+        - WisconsinVotes.qmd
+        
 
 format:
   html:
-    theme: cosmo
+    theme: zephyr
     css: styles.css
     toc: true
 
 editor: visual
+
+
 
 

@@ -1,14 +1,16 @@
 ---
-title: "WisconsinVotes"
+title: "Wisconsin Votes"
+sidebar: false
 format: html
 editor: visual
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r}
+```{r, results = 'hide'}
 #| echo: FALSE
 #| warning: FALSE
+#| results: hide
 
 library(tidyverse)
 library(ggplot2)
@@ -20,10 +22,11 @@ library(ggspatial)
 library(prettymapr)
 ```
 
-```{r}
+```{r, result = 'hide'}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
+#| results: hide
 
 votes <- results_house
 
@@ -57,10 +60,11 @@ wi_results %>%
   )
 ```
 
-```{r}
+```{r, result = 'hide'}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
+#| results: hide
 
 # Download congressional district shapefiles for the 113th Congress from a UCLA website (don't sweat the details too much)
 src <- "http://cdmaps.polisci.ucla.edu/shp/districts113.zip"
@@ -77,20 +81,22 @@ dsn_districts <- fs::path(lcl_districts, "districtShapes")
 st_layers(dsn_districts)
 ```
 
-```{r}
+```{r, results = 'hide'}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
+#| results: hide
 
 # be able to read as a data frame as well
 districts <- st_read(dsn_districts, layer = "districts113") |>
   mutate(DISTRICT = parse_number(as.character(DISTRICT)))
 ```
 
-```{r}
+```{r, results = 'hide'}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
+#| results: hide
 
 # create basic plot with WI congressional districts
 wi_shp <- districts |>
@@ -100,10 +106,11 @@ wi_shp |>
   plot(col = gray.colors(nrow(wi_shp)))
 ```
 
-```{r}
+```{r, results = 'hide'}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
+#| results: hide
 
 # Append election results to geospatial data
 wi_merged <- wi_shp |>
@@ -112,7 +119,7 @@ wi_merged <- wi_shp |>
 head(wi_merged, width = Inf)
 ```
 
-```{r}
+```{r, results = 'hide'}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE

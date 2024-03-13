@@ -1,9 +1,8 @@
 ---
 title: "About"
+sidebar: false
 ---
 
-About this site
+# About this site
 
-```{r}
-1 + 1
-```
+This is a project (or series of projects) created for MSCS 264 (Data Science 2) at St Olaf College. It contains a semseter's worth of work and lots and lots of troubleshooting and polishing. I hope you enjoy. 

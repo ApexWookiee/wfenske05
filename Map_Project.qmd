@@ -1,19 +1,28 @@
 ---
-title: "Map_Project"
+title: "Terrorism in the United States"
+sidebar: false
 format: html
 editor: visual
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r,echo = FALSE, message = FALSE, warnings = FALSE}
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+
 library(tidyverse)
 library(mdsr)
 library(poliscidata)
 library(maps)
 ```
 
-```{r, echo = FALSE, message = FALSE, results = 'hide'}
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+
 # data importing and tidying
 us_states <- map_data("state")
 
@@ -43,7 +52,11 @@ group_by(region) %>%
   full_join(us_states, by = "region")
 ```
 
-```{r, echo = FALSE, results = 'hide', warnings = FALSE, eval = TRUE}
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+
 #plotting terrorist attacks frequency by state
 
 terror2 %>%

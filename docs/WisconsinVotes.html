@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Walter Fenske - WisconsinVotes</title>
+<title>Walter Fenske - Wisconsin Votes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,21 +81,28 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mini-project-1" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Mini Project 1</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-mini-project-1">    
+        <li>
+    <a class="dropdown-item" href="./Map_Project.html" rel="" target="">
+ <span class="dropdown-text">Terrorism in the United States</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./WisconsinVotes.html" rel="" target="">
+ <span class="dropdown-text">Wisconsin Votes</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Map_Project.html" rel="" target="">
- <span class="menu-text">Mini Project 1 - US Data</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./WisconsinVotes.html" rel="" target="" aria-current="page">
- <span class="menu-text">Mini Project 1 - Wisconsin</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About This Page</span></a>
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -122,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">WisconsinVotes</h1>
+<h1 class="title">Wisconsin Votes</h1>
 </div>
 
 
@@ -138,73 +145,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 5
-  d_total r_total total_votes_sum prop_r prop_d
-    &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-1 1445015 1401995         2862367  0.490  0.505</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Driver: ESRI Shapefile 
-Available layers:
-    layer_name geometry_type features fields crs_name
-1 districts113       Polygon      436     15    NAD83</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `districts113' from data source 
-  `C:\Users\Walter\AppData\Local\Temp\Rtmpg1aPEO\districts113\districtShapes' 
-  using driver `ESRI Shapefile'
-Simple feature collection with 436 features and 15 fields (with 1 geometry empty)
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: -179.1473 ymin: 18.91383 xmax: 179.7785 ymax: 71.35256
-Geodetic CRS:  NAD83</code></pre>
-</div>
-</div>
-<div class="cell">
 <div class="cell-output-display">
 <p><img src="WisconsinVotes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 6 features and 22 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: -92.808 ymin: 42.49198 xmax: -87.50719 ymax: 45.20957
-Geodetic CRS:  WGS 84
-  STATENAME           ID DISTRICT STARTCONG ENDCONG DISTRICTSI COUNTY PAGE  LAW
-1 Wisconsin 055113114001        1       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-2 Wisconsin 055113114002        2       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-3 Wisconsin 055113114003        3       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-4 Wisconsin 055113114004        4       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-5 Wisconsin 055113114005        5       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-6 Wisconsin 055113114006        6       113     114       &lt;NA&gt;   &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-  NOTE BESTDEC                  FINALNOTE RNOTE                 LASTCHANGE
-1 &lt;NA&gt;    &lt;NA&gt; {"From US Census website"}  &lt;NA&gt; 2016-05-29 16:44:10.857626
-2 &lt;NA&gt;    &lt;NA&gt; {"From US Census website"}  &lt;NA&gt; 2016-05-29 16:44:10.857626
-3 &lt;NA&gt;    &lt;NA&gt; {"From US Census website"}  &lt;NA&gt; 2016-05-29 16:44:10.857626
-4 &lt;NA&gt;    &lt;NA&gt; {"From US Census website"}  &lt;NA&gt; 2016-05-29 16:44:10.857626
-5 &lt;NA&gt;    &lt;NA&gt; {"From US Census website"}  &lt;NA&gt; 2016-05-29 16:44:10.857626
-6 &lt;NA&gt;    &lt;NA&gt; {"From US Census website"}  &lt;NA&gt; 2016-05-29 16:44:10.857626
-  FROMCOUNTY N total_votes d_votes r_votes other_votes    r_prop     winner
-1          F 3      364891  158414  200423        6054 0.5492681 Republican
-2          F 6      390111  265422  124683           6 0.3196090   Democrat
-3          F 2      339425  217712  121713           0 0.3585858   Democrat
-4          F 3      325321  235257   80787        9277 0.2483301   Democrat
-5          F 2      368813  118478  250335           0 0.6787586 Republican
-6          F 3      359381  135921  223460           0 0.6217914 Republican
-                        geometry
-1 MULTIPOLYGON (((-89.08072 4...
-2 MULTIPOLYGON (((-90.43 43.1...
-3 MULTIPOLYGON (((-91.3984 44...
-4 MULTIPOLYGON (((-88.06601 4...
-5 MULTIPOLYGON (((-89.01359 4...
-6 MULTIPOLYGON (((-89.78555 4...</code></pre>
 </div>
 </div>
 <div class="cell">
