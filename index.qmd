@@ -1,12 +1,28 @@
 ---
-title: "Walter Wonderful Website :)"
+title: "Walter's Wonderful Website"
 sidebar: false
+editor_options: 
+  chunk_output_type: console
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am learning how to do data science. Here is a quick example of what this website can do. 
 
 ```{r}
-1 + 1
+library(palmerpenguins)
+library(ggplot2)
+library(ggthemes)
+
+penguins %>%
+  drop_na() %>%
+  ggplot(aes(x = body_mass_g, y = bill_length_mm), color = species) +
+  geom_point(aes(color = species))+
+  geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+  scale_color_colorblind() +
+  theme_bw() +
+  labs(
+    x = "Body Mass (g)",
+    y = "Flipper Length (mm)",
+    color = "Penguin Species"
+  )
 ```
+
