@@ -9,9 +9,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Walter Wonderful Website :)",
+    "title": "Walter’s Wonderful Website",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "I am learning how to do data science. Here is a quick example of what this website can do.\n\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(palmerpenguins)\nlibrary(ggplot2)\nlibrary(ggthemes)\n\npenguins %&gt;%\n  drop_na() %&gt;%\n  ggplot(aes(x = body_mass_g, y = bill_length_mm), color = species) +\n  geom_point(aes(color = species))+\n  geom_smooth(method = \"lm\", se = FALSE, aes(color = species)) +\n  scale_color_colorblind() +\n  theme_bw() +\n  labs(\n    x = \"Body Mass (g)\",\n    y = \"Flipper Length (mm)\",\n    color = \"Penguin Species\"\n  )"
   },
   {
     "objectID": "about.html",

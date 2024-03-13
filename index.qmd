@@ -8,6 +8,12 @@ editor_options:
 I am learning how to do data science. Here is a quick example of what this website can do. 
 
 ```{r}
+#| echo: true
+#| message: false
+#| warning: false
+
+library(dplyr)
+library(tidyr)
 library(palmerpenguins)
 library(ggplot2)
 library(ggthemes)
