@@ -1,0 +1,20 @@
+---
+title: "Twinning Success (Project From STAT 272)"
+sidebar: false
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+![](272_Final_Project_Walter_Keegan-1.png)
+
+![](272_Final_Project_Walter_Keegan-2.png)
+
+![](272_Final_Project_Walter_Keegan-3.png)
+
+![](272_Final_Project_Walter_Keegan-4.png)
+
+![](272_Final_Project_Walter_Keegan-5.png)
+
+![](272_Final_Project_Walter_Keegan-6.png)

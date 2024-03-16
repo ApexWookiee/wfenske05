@@ -1,0 +1,30 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+```
+
+# Create Intial Tibble
+
+```{r}
+names <- tibble(names = c("Walter", "Nolan", "Michael", "Devon", "Helen", "Bea", "Onea", "Shelby", "Keegan", "Henry", "Sid", "Carol", "Julie", "Maren", "Garret", "Fiona"))
+
+names <- tibble(names, rep(names)) %>%
+  rename(
+    giver = names,
+    recipient = `rep(names)`
+  )
+
+sample(names$giver)
+
+tibble(names, sample(names$giver)) %>%
+  select(-giver) %>%
+  rename(
+  shuffle = `sample(names$giver)`
+  )
+```
+
