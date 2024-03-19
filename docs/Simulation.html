@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Walter Fenske – simulation</title>
+<title>Walter Fenske - Secret Santa Simulation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -130,12 +130,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mini-project-2" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Mini Project 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-mini-project-2">    
+        <li>
+    <a class="dropdown-item" href="./Simulation.html" rel="" target="">
+ <span class="dropdown-text">Secret Santa Simulation</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./StatModeling_FinalProject.qmd" rel="" target="">
+    <a class="nav-link" href="./StatModeling_Final_Project.html" rel="" target="">
  <span class="menu-text">MN Twins</span></a>
   </li>  
   <li class="nav-item">
@@ -148,119 +159,224 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Map_Project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Terrorism in the United States</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./WisconsinVotes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wisconsin Votes</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#create-intial-tibble" id="toc-create-intial-tibble" class="nav-link active" data-scroll-target="#create-intial-tibble">Create Intial Tibble</a></li>
+  <li><a href="#create-intial-lineup" id="toc-create-intial-lineup" class="nav-link active" data-scroll-target="#create-intial-lineup">Create Intial Lineup</a></li>
+  <li><a href="#check-number-of-matches-in-a-lineup" id="toc-check-number-of-matches-in-a-lineup" class="nav-link" data-scroll-target="#check-number-of-matches-in-a-lineup">Check Number of Matches in a Lineup</a></li>
+  <li><a href="#simulate-3000-lineups" id="toc-simulate-3000-lineups" class="nav-link" data-scroll-target="#simulate-3000-lineups">Simulate 3000 Lineups</a></li>
+  <li><a href="#initial-testing-results" id="toc-initial-testing-results" class="nav-link" data-scroll-target="#initial-testing-results">Initial Testing Results</a></li>
+  <li><a href="#subset-of-good-lineups" id="toc-subset-of-good-lineups" class="nav-link" data-scroll-target="#subset-of-good-lineups">Subset of “Good” Lineups</a></li>
+  <li><a href="#analysis-of-good-lineups" id="toc-analysis-of-good-lineups" class="nav-link" data-scroll-target="#analysis-of-good-lineups">Analysis of “Good” Lineups</a></li>
+  <li><a href="#plot-of-reciprocal-pairs" id="toc-plot-of-reciprocal-pairs" class="nav-link" data-scroll-target="#plot-of-reciprocal-pairs">Plot of Reciprocal Pairs</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Secret Santa Simulation</h1>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SecretSanta_dec2023.jpg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>In December 2023, I participated in a Secret Santa event with 16 of my friends (see above). It was my first experience with a Secret Santa in such a large group. To our surprise, when we opened our gifts, my friend Jesse and I discovered that we had been assigned to each other as gift-givers. This was the only case of mutual gift exchange in our group, with no other pairs experiencing this kind of reciprocity. I was curious to know: what were the odds of this happening?</p>
+<section id="create-intial-lineup" class="level1">
+<h1>Create Intial Lineup</h1>
+<p>Below is an example of a table representing a lineup for Secret Santa.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>test_shuffle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 17 × 2
+   recipient giver_shuffle
+   &lt;chr&gt;     &lt;chr&gt;        
+ 1 Walter    Bea          
+ 2 Nolan     Keegan       
+ 3 Michael   Onea         
+ 4 Devon     Henry        
+ 5 Helen     Carol        
+ 6 Bea       Nolan        
+ 7 Onea      Devon        
+ 8 Shelby    Helen        
+ 9 Keegan    Walter       
+10 Henry     Michael      
+11 Sid       Julie        
+12 Carol     Shelby       
+13 Julie     Sid          
+14 Maren     Garret       
+15 Garret    Maren        
+16 Fiona     Gus          
+17 Gus       Fiona        </code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.3.3</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-</div>
-<section id="create-intial-tibble" class="level1">
-<h1>Create Intial Tibble</h1>
+<p>What we will do with this table is permute the “giver” column while leaving the “recipient” column as is. We then will count the number of times a reciprocal pair occurs and plot how frequently they occur. However, we must first address one large issue. When permuting columns, it is likely to get a lineup where someone’s name occurs twice in the same row, i.e., they give a gift to themselves. We do not want this to happen, so we must create a workaround.</p>
+</section>
+<section id="check-number-of-matches-in-a-lineup" class="level1">
+<h1>Check Number of Matches in a Lineup</h1>
+<p>This code does exactly what is mentioned previously: it allows us to detect if there is a lineup where someone gives a gift to themselves.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">names =</span> <span class="fu">c</span>(<span class="st">"Walter"</span>, <span class="st">"Nolan"</span>, <span class="st">"Michael"</span>, <span class="st">"Devon"</span>, <span class="st">"Helen"</span>, <span class="st">"Bea"</span>, <span class="st">"Onea"</span>, <span class="st">"Shelby"</span>, <span class="st">"Keegan"</span>, <span class="st">"Henry"</span>, <span class="st">"Sid"</span>, <span class="st">"Carol"</span>, <span class="st">"Julie"</span>, <span class="st">"Maren"</span>, <span class="st">"Garret"</span>, <span class="st">"Fiona"</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">tibble</span>(names, <span class="fu">rep</span>(names)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">giver =</span> names,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">recipient =</span> <span class="st">`</span><span class="at">rep(names)</span><span class="st">`</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(names<span class="sc">$</span>giver)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#if this function returns anything but zero, it means there is a match, which we do not want. </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>checkMatch <span class="ot">&lt;-</span> <span class="cf">function</span>(shuffle){</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  santaLength <span class="ot">=</span> <span class="fu">nrow</span>(names)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  match_count <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  bad_tibble_count <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>santaLength){</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(shuffle <span class="sc">$</span>recipient[i] <span class="sc">!=</span> shuffle<span class="sc">$</span>giver_shuffle[i])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      match_count <span class="ot">=</span> match_count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(match_count <span class="sc">!=</span> <span class="fu">count</span>(names)){</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    bad_tibble_count <span class="ot">=</span> bad_tibble_count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(bad_tibble_count)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="simulate-3000-lineups" class="level1">
+<h1>Simulate 3000 Lineups</h1>
+<p>Now we will simulate 3000 lineups and use our checkMatch() function to find those that are usable. Why 3000 lineups? I figured out ahead of time that this would give us around 1000 usable lineups due to the nature of the <a href="https://en.wikipedia.org/wiki/Derangement">derangement</a> of 17 items.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating list to store 1000 shuffles </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>shuffled_tibbles <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># place 3000 permuted tibbles in the list</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3000</span>){</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  shuffled_giver <span class="ot">&lt;-</span> <span class="fu">sample</span>(names<span class="sc">$</span>giver)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  new_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">recipient =</span> names<span class="sc">$</span>recipient, <span class="at">giver_shuffle =</span>shuffled_giver)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  shuffled_tibbles[[i]] <span class="ot">&lt;-</span> new_tibble</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#check how many of them have at least one match, where giver and recipient are the same person. </span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>how_many_bad_tibbles <span class="ot">&lt;-</span> <span class="cf">function</span>(list){</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  bad_tibbles <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(shuffled_tibbles))){</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">checkMatch</span>(shuffled_tibbles[[i]]) <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>      bad_tibbles <span class="ot">=</span> bad_tibbles <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(bad_tibbles)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#check our shuffled_tibbles</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">how_many_bad_tibbles</span>(shuffled_tibbles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Nolan"   "Devon"   "Michael" "Walter"  "Onea"    "Carol"   "Keegan" 
- [8] "Julie"   "Sid"     "Maren"   "Garret"  "Bea"     "Henry"   "Fiona"  
-[15] "Helen"   "Shelby" </code></pre>
+<pre><code>[1] 1928</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(names, <span class="fu">sample</span>(names<span class="sc">$</span>giver)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>giver) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">shuffle =</span> <span class="st">`</span><span class="at">sample(names$giver)</span><span class="st">`</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="initial-testing-results" class="level1">
+<h1>Initial Testing Results</h1>
+<p>We can see that 1929 of our lineups had one or more instances of someone giving themselves a gift, which is nearly 2/3rds of all of our lineups.</p>
+</section>
+<section id="subset-of-good-lineups" class="level1">
+<h1>Subset of “Good” Lineups</h1>
+<p>To make sure that we have no rows where the giver and recipient are the same person, we create this function called remove_bad_tibbles. In the end, we will have a list of “good” lineups that we will iterate over to count reciprocal pairs.</p>
+<div class="cell" data-messge="false">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>remove_bad_tibbles <span class="ot">&lt;-</span> <span class="cf">function</span>(list){</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#initialize empty list and an index so we don't skip over indices that don't match the if statement. </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  good_tibbles <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  good_tibble_index <span class="ot">=</span> <span class="dv">0</span> <span class="co">#r indexes at 1, this should work</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(shuffled_tibbles))){</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">checkMatch</span>(list[[i]]) <span class="sc">==</span> <span class="dv">0</span>){ </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      good_tibble_index <span class="ot">=</span> good_tibble_index <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      good_tibbles[[good_tibble_index]] <span class="ot">&lt;-</span> list[[i]]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(good_tibbles)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>good_tibbles <span class="ot">&lt;-</span> <span class="fu">remove_bad_tibbles</span>(shuffled_tibbles) <span class="co">#store results in list</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(good_tibbles) <span class="co">#total number of tibbles that do not have matches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 16 × 2
-   recipient shuffle
-   &lt;chr&gt;     &lt;chr&gt;  
- 1 Walter    Keegan 
- 2 Nolan     Julie  
- 3 Michael   Devon  
- 4 Devon     Fiona  
- 5 Helen     Carol  
- 6 Bea       Henry  
- 7 Onea      Garret 
- 8 Shelby    Helen  
- 9 Keegan    Michael
-10 Henry     Shelby 
-11 Sid       Maren  
-12 Carol     Sid    
-13 Julie     Nolan  
-14 Maren     Walter 
-15 Garret    Onea   
-16 Fiona     Bea    </code></pre>
+<pre><code>[1] 1072</code></pre>
 </div>
 </div>
+<p>We can see that we have simulated 1072 lineups without any matches. For our purposes, this is enough to perform the following analysis.</p>
+</section>
+<section id="analysis-of-good-lineups" class="level1">
+<h1>Analysis of “Good” Lineups</h1>
+<p>The following function checks to see how many reciprocal pairs occur in our usable lineups. A usable lineup is a lineup where nobody gives themselves a gift.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>count_reciprocal_pairs <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  count <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(data)) {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We check if there's a row where the current row's giver is the recipient and vice versa. We essentially reverse the order of recipient and giver and check if that exists elsewhere. </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    reciprocal_exists <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(recipient <span class="sc">==</span> data<span class="sc">$</span>giver_shuffle[i], giver_shuffle <span class="sc">==</span> data<span class="sc">$</span>recipient[i]) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">nrow</span>() <span class="co"># creates a tibble of all matches for a given row of giver/recipient</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(reciprocal_exists <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      count <span class="ot">=</span> count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Since each pair is counted twice, we divide the count by 2 to get the unique pairs</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(count <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Nice! The last thing to do is to plot how frequently each reciprocal pair occurs. What I mean by this is sometimes you will have lineups with 0 reciprocal pairs, sometimes there are 1,2, etc.</p>
+</section>
+<section id="plot-of-reciprocal-pairs" class="level1">
+<h1>Plot of Reciprocal Pairs</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|echo: false</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|message: false</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#|results: hide</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(pairs_vector) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Simulation of"</span>, <span class="fu">length</span>(good_tibbles), <span class="st">"Secret Santas"</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="st">"Number of Reciprocal Pairs"</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Simulation_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pairs_vector)<span class="sc">/</span><span class="fu">length</span>(good_tibbles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5354478</code></pre>
+</div>
+</div>
+<p>A little more than 50% of the time, we can expect that there will be 1 or more reciprocal pairs when doing Secret Santa with size 17. In the future, I would like to investigate this phenomenon with varying group sizes, some small, some large, etc.</p>
 
 
 </section>

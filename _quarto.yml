@@ -9,6 +9,7 @@ website:
     search: true
     left:
       - sidebar:mini_project
+      - sidebar:mini_project2
       - file: index.qmd
         text: "Home"
       - file: StatModeling_Final_Project.qmd
@@ -23,6 +24,10 @@ website:
         - Map_Project.qmd
         - WisconsinVotes.qmd
         
+    - id: mini_project2
+      title: "Mini Project 2"
+      contents: 
+        - Simulation.qmd
 
 format:
   html:
