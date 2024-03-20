@@ -124,7 +124,7 @@ how_many_bad_tibbles(shuffled_tibbles)
 
 # Initial Testing Results
 
-We can see that 1929 of our lineups had one or more instances of someone giving themselves a gift, which is nearly 2/3rds of all of our lineups. 
+We can see that `r how_many_bad_tibbles(shuffled_tibbles)` of our lineups had one or more instances of someone giving themselves a gift, which is nearly 2/3rds of all of our lineups. 
 
 # Subset of "Good" Lineups
 
@@ -206,13 +206,14 @@ pairs_vector <- how_many_pairs(good_tibbles)
 # Plot of Reciprocal Pairs
 
 ```{r}
-#|echo: false
-#|message: false
-#|results: hide
+#| echo: false
+#| message: false
+#| results: hide
+#| warning: false
 
 as_tibble(pairs_vector) %>%
   ggplot(aes(x = value)) +
-  geom_histogram(fill = 'blue') +
+  geom_histogram(fill = 'blue', binwidth = 0.1) +
   theme_bw() +
   labs(
   title = paste("Simulation of", length(good_tibbles), "Secret Santas"),
@@ -225,4 +226,4 @@ as_tibble(pairs_vector) %>%
 sum(pairs_vector)/length(good_tibbles)
 ```
 
-A little more than 50% of the time, we can expect that there will be 1 or more reciprocal pairs when doing Secret Santa with size 17. In the future, I would like to investigate this phenomenon with varying group sizes, some small, some large, etc. 
+A little more than 50% of the time, we can expect that there will be 1 or more reciprocal pairs when creating Secret Santa lineups with 17 people. In the future, I would like to investigate this phenomenon with varying group sizes to see how the frequency of reciprocal pairs changes. 
