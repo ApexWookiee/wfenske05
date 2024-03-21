@@ -227,3 +227,5 @@ sum(pairs_vector)/length(good_tibbles)
 ```
 
 A little more than 50% of the time, we can expect that there will be 1 or more reciprocal pairs when creating Secret Santa lineups with 17 people. In the future, I would like to investigate this phenomenon with varying group sizes to see how the frequency of reciprocal pairs changes. 
+
+[Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)

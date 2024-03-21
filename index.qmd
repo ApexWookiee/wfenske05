@@ -5,6 +5,8 @@ editor_options:
   chunk_output_type: console
 ---
 
+[Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)
+
 I am learning how to do data science. Here is a quick example of what this website can do. 
 
 ```{r}
