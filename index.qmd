@@ -7,7 +7,7 @@ editor_options:
 
 [Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)
 
-I am learning how to do data science. Here is a quick example of what this website can do. 
+I am learning how to do data science. This is built using a [Quarto Website](https://quarto.org/docs/websites/). This is a powerful tool in data science. It enables me to easily display code and output at my discretion. Below is an example of this in action. 
 
 ```{r}
 #| echo: true
@@ -33,4 +33,3 @@ penguins %>%
     color = "Penguin Species"
   )
 ```
-

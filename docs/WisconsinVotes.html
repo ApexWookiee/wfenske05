@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Walter Fenske - Wisconsin Votes</title>
+<title>Walter Fenske - Wisconsin Votes from 2016 Presidential Election</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,6 +81,10 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mini-project-1" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Mini Project 1</span>
@@ -92,13 +96,24 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="./WisconsinVotes.html" rel="" target="">
- <span class="dropdown-text">Wisconsin Votes</span></a>
+ <span class="dropdown-text">Wisconsin Votes from 2016 Presidential Election</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mini-project-2" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Mini Project 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-mini-project-2">    
+        <li>
+    <a class="dropdown-item" href="./Simulation.html" rel="" target="">
+ <span class="dropdown-text">Secret Santa Simulation</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./StatModeling_Final_Project.html" rel="" target="">
+ <span class="menu-text">MN Twins</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html" rel="" target="">
@@ -129,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Wisconsin Votes</h1>
+<h1 class="title">Wisconsin Votes from 2016 Presidential Election</h1>
 </div>
 
 
@@ -144,11 +159,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>The template is created by selecting Wisconsin from the US States data and adding its congressional districts. It serves as a base for our next step: overlaying the 2016 presidential election results onto it, providing a clear visual of the election data across Wisconsin’s districts.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="WisconsinVotes_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Now we will take data from <a href="http://cdmaps.polisci.ucla.edu/shp/districts113.zip">here</a> and overlay it onto the template created above. The result is the following map:</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="WisconsinVotes_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
@@ -156,7 +173,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="gerrymandering" class="level1">
 <h1>Gerrymandering?</h1>
-<p>When one looks at a map, one expects that Democrats should win about half of the seats and that Republicans should win the other half. However, this is not the case. Instead, this map tells us that Republicans won 5 of 8 available districts with democrats claiming the remaining 3. Gerrymandering is hard to explicitly prove, but intuition tells us that something is off. It is for this reason that we might create these kinds of maps before moving to rigorous statistical methods to tell us if something is unexpected.</p>
+<p>When one looks at this map and considers the <a href="https://www.pewresearch.org/religion/religious-landscape-study/state/wisconsin/party-affiliation/">distribution of voters in Wisconsin</a>, one expects that Democrats should win about half of the seats and that Republicans should win the other half. However, this is not the case. Instead, this map tells us that Republicans won 5 of 8 available districts with democrats claiming the remaining 3. Gerrymandering is hard to explicitly prove, but intuition tells us that something is off. It is for this reason that we might create these kinds of maps before moving to rigorous statistical methods to tell us if something is unexpected.</p>
+<p><a href="https://github.com/ApexWookiee/wfenske05">Link to my GitHub Code</a></p>
 
 
 </section>

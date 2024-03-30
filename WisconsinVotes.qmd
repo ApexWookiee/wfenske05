@@ -1,5 +1,5 @@
 ---
-title: "Wisconsin Votes"
+title: "Wisconsin Votes from 2016 Presidential Election"
 sidebar: false
 format: html
 editor: visual
@@ -7,7 +7,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r, results = 'hide'}
+```{r}
 #| echo: FALSE
 #| warning: FALSE
 #| results: hide
@@ -22,7 +22,7 @@ library(ggspatial)
 library(prettymapr)
 ```
 
-```{r, result = 'hide'}
+```{r}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
@@ -60,7 +60,7 @@ wi_results %>%
   )
 ```
 
-```{r, result = 'hide'}
+```{r}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
@@ -81,7 +81,7 @@ dsn_districts <- fs::path(lcl_districts, "districtShapes")
 st_layers(dsn_districts)
 ```
 
-```{r, results = 'hide'}
+```{r}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
@@ -92,7 +92,9 @@ districts <- st_read(dsn_districts, layer = "districts113") |>
   mutate(DISTRICT = parse_number(as.character(DISTRICT)))
 ```
 
-```{r, results = 'hide'}
+The template is created by selecting Wisconsin from the US States data and adding its congressional districts. It serves as a base for our next step: overlaying the 2016 presidential election results onto it, providing a clear visual of the election data across Wisconsin's districts.
+
+```{r}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
@@ -106,7 +108,7 @@ wi_shp |>
   plot(col = gray.colors(nrow(wi_shp)))
 ```
 
-```{r, results = 'hide'}
+```{r}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
@@ -119,7 +121,9 @@ wi_merged <- wi_shp |>
 head(wi_merged, width = Inf)
 ```
 
-```{r, results = 'hide'}
+Now we will take data from [here](http://cdmaps.polisci.ucla.edu/shp/districts113.zip) and overlay it onto the template created above. The result is the following map: 
+
+```{r}
 #| echo: FALSE
 #| warning: FALSE
 #| message: FALSE
@@ -138,4 +142,6 @@ wi
 
 # Gerrymandering?
 
-When one looks at a map, one expects that Democrats should win about half of the seats and that Republicans should win the other half. However, this is not the case. Instead, this map tells us that Republicans won 5 of 8 available districts with democrats claiming the remaining 3. Gerrymandering is hard to explicitly prove, but intuition tells us that something is off. It is for this reason that we might create these kinds of maps before moving to rigorous statistical methods to tell us if something is unexpected.
+When one looks at this map and considers the [distribution of voters in Wisconsin](https://www.pewresearch.org/religion/religious-landscape-study/state/wisconsin/party-affiliation/), one expects that Democrats should win about half of the seats and that Republicans should win the other half. However, this is not the case. Instead, this map tells us that Republicans won 5 of 8 available districts with democrats claiming the remaining 3. Gerrymandering is hard to explicitly prove, but intuition tells us that something is off. It is for this reason that we might create these kinds of maps before moving to rigorous statistical methods to tell us if something is unexpected.
+
+[Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)

@@ -7,14 +7,16 @@ editor_options:
   chunk_output_type: console
 ---
 
-![](272_Final_Project_Walter_Keegan-1.png)
+![](images/272_Final_Project_Walter_Keegan-1.png){fig-align="center"}
 
-![](272_Final_Project_Walter_Keegan-2.png)
+![](images/272_Final_Project_Walter_Keegan-2.png){fig-align="center"}
 
-![](272_Final_Project_Walter_Keegan-3.png)
+![](images/272_Final_Project_Walter_Keegan-3.png){fig-align="center"}
 
-![](272_Final_Project_Walter_Keegan-4.png)
+![](images/272_Final_Project_Walter_Keegan-3.png)
 
-![](272_Final_Project_Walter_Keegan-5.png)
+![](images/272_Final_Project_Walter_Keegan-4.png){fig-align="center"}
 
-![](272_Final_Project_Walter_Keegan-6.png)
+![](images/272_Final_Project_Walter_Keegan-5.png){fig-align="center"}
+
+![](images/272_Final_Project_Walter_Keegan-6.png){fig-align="center"}

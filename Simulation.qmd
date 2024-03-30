@@ -1,7 +1,8 @@
 ---
 title: "Secret Santa Simulation"
 sidebar: false
-output: html_document
+format: html
+editor: visual
 editor_options: 
   chunk_output_type: console
 ---
@@ -15,7 +16,7 @@ library(tidyverse)
 library(dplyr)
 ```
 
-![](SecretSanta_dec2023.jpg){fig-align="center"}
+![](images/SecretSanta_dec2023.jpg){fig-align="center"}
 
 In December 2023, I participated in a Secret Santa event with 16 of my friends (see above). It was my first experience with a Secret Santa in such a large group. To our surprise, when we opened our gifts, my friend Jesse and I discovered that we had been assigned to each other as gift-givers. This was the only case of mutual gift exchange in our group, with no other pairs experiencing this kind of reciprocity. I was curious to know: what were the odds of this happening?
 
@@ -51,10 +52,25 @@ test_shuffle <- tibble(
 )
 ```
 
-```{r}
-#| echo: true
-test_shuffle
-```
+| Giver   | Recipient |
+|---------|-----------|
+| Walter  | Bea       |
+| Nolan   | Keegan    |
+| Michael | Onea      |
+| Devon   | Henry     |
+| Helen   | Carol     |
+| Bea     | Nolan     |
+| Onea    | Devon     |
+| Shelby  | Helen     |
+| Keegan  | Walter    |
+| Henry   | Michael   |
+| Sid     | Julie     |
+| Carol   | Shelby    |
+| Julie   | Sid       |
+| Maren   | Garret    |
+| Garret  | Maren     |
+| Fiona   | Gus       |
+| Gus     | Fiona     |
 
 What we will do with this table is permute the "giver" column while leaving the "recipient" column as is. We then will count the number of times a reciprocal pair occurs and plot how frequently they occur. However, we must first address one large issue. When permuting columns, it is likely to get a lineup where someone's name occurs twice in the same row, i.e., they give a gift to themselves. We do not want this to happen, so we must create a workaround.
 
@@ -66,8 +82,6 @@ This code does exactly what is mentioned previously: it allows us to detect if t
 #| echo: true
 #| message: false
 #| warning: false
-
-set.seed(123)
 
 #if this function returns anything but zero, it means there is a match, which we do not want. 
 checkMatch <- function(shuffle){
@@ -86,9 +100,9 @@ checkMatch <- function(shuffle){
 }
 ```
 
-# Simulate 3000 Lineups 
+# Simulate 3000 Lineups
 
-Now we will simulate 3000 lineups and use our checkMatch() function to find those that are usable. Why 3000 lineups? I figured out ahead of time that this would give us around 1000 usable lineups due to the nature of the [derangement](https://en.wikipedia.org/wiki/Derangement) of 17 items. 
+Now we will simulate 3000 lineups and use our checkMatch() function to find those that are usable. Why 3000 lineups? I figured out ahead of time that this would give us around 1000 usable lineups due to the nature of the [derangement](https://en.wikipedia.org/wiki/Derangement) of 17 items.
 
 ```{r}
 #| echo: true
@@ -124,11 +138,11 @@ how_many_bad_tibbles(shuffled_tibbles)
 
 # Initial Testing Results
 
-We can see that `r how_many_bad_tibbles(shuffled_tibbles)` of our lineups had one or more instances of someone giving themselves a gift, which is nearly 2/3rds of all of our lineups. 
+We can see that `r how_many_bad_tibbles(shuffled_tibbles)` of our lineups had one or more instances of someone giving themselves a gift, which is nearly 2/3rds of all of our lineups.
 
 # Subset of "Good" Lineups
 
-To make sure that we have no rows where the giver and recipient are the same person, we create this function called remove_bad_tibbles. In the end, we will have a list of  "good" lineups that we will iterate over to count reciprocal pairs.
+To make sure that we have no rows where the giver and recipient are the same person, we create this function called remove_bad_tibbles. In the end, we will have a list of "good" lineups that we will iterate over to count reciprocal pairs.
 
 ```{r}
 #| echo: true
@@ -184,7 +198,7 @@ count_reciprocal_pairs <- function(data) {
 }
 ```
 
-Nice! The last thing to do is to plot how frequently each reciprocal pair occurs. What I mean by this is sometimes you will have lineups with 0 reciprocal pairs, sometimes there are 1,2, etc. 
+Nice! The last thing to do is to plot how frequently each reciprocal pair occurs. What I mean by this is sometimes you will have lineups with 0 reciprocal pairs, sometimes there are 1,2, etc.
 
 ```{r}
 #| echo: false
@@ -226,6 +240,6 @@ as_tibble(pairs_vector) %>%
 sum(pairs_vector)/length(good_tibbles)
 ```
 
-A little more than 50% of the time, we can expect that there will be 1 or more reciprocal pairs when creating Secret Santa lineups with 17 people. In the future, I would like to investigate this phenomenon with varying group sizes to see how the frequency of reciprocal pairs changes. 
+In our results, about `r 100*round(sum(pairs_vector)/length(good_tibbles), digits = 3)`% of the time we can expect that there will be 1 or more reciprocal pairs when creating Secret Santa lineups with 17 people. That is a higher proportion than I initially expected. In the future, I would like to investigate this phenomenon with varying group sizes to see how the frequency of reciprocal pairs changes.
 
 [Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)

@@ -52,6 +52,8 @@ group_by(region) %>%
   full_join(us_states, by = "region")
 ```
 
+The following map was created using a subset of data available [here](https://www.kaggle.com/code/abigaillarion/terrorist-attacks-in-united-states). The original data has information regarding terrorist attacks globally but I honed in on just the United States for this project. 
+
 ```{r}
 #| echo: FALSE
 #| warning: FALSE
@@ -77,3 +79,5 @@ terror2 %>%
 It is no surprise that the the most populous states also have the most terrorist attacks, especially California and New York. However, even states like Florida and Texas do not have as many as CA and NY. This is interesting, suggesting that terrorism may not be a symptom of a larger population but rather something else. Maybe it is economic power or perhaps connection to countries overseas, both of which are strong in NY and CA. Perhaps it also has something to do with the fact that NY and CA are very much symbols of what America stands for.
 
 Additionally, there is a large absence of terrorist attacks in the the non coastal states with the exception of Illinois. It is possible that total population does not matter as much, rather the concentration of the population is what matters. Big cities like Los Angeles, Chicago, Seattle, NYC, etc., are definitely attractive targets for potential attackers.
+
+[Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)
