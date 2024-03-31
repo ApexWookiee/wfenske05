@@ -1,24 +1,34 @@
 ---
-title: "Walter's Wonderful Website"
+title: "Data Science a la Walter"
 sidebar: false
 editor_options: 
   chunk_output_type: console
 ---
 
+![](images/walterPFP.jpg){fig-align="center"}
+
 [Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)
 
-I am learning how to do data science. This is built using a [Quarto Website](https://quarto.org/docs/websites/). This is a powerful tool in data science. It enables me to easily display code and output at my discretion. Below is an example of this in action. 
+I am learning how to do data science. This is built using a [Quarto Website](https://quarto.org/docs/websites/). This is a powerful tool in data science. It enables me to easily display code and output at my discretion. Below is an example of this in action.
 
 ```{r}
-#| echo: true
+#| echo: false
 #| message: false
 #| warning: false
+
 
 library(dplyr)
 library(tidyr)
 library(palmerpenguins)
 library(ggplot2)
 library(ggthemes)
+```
+
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
 
 penguins %>%
   drop_na() %>%

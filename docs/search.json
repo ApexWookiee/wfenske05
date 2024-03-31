@@ -9,16 +9,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Walter’s Wonderful Website",
+    "title": "Data Science a la Walter",
     "section": "",
-    "text": "Link to my GitHub Code\nI am learning how to do data science. This is built using a Quarto Website. This is a powerful tool in data science. It enables me to easily display code and output at my discretion. Below is an example of this in action.\n\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(palmerpenguins)\nlibrary(ggplot2)\nlibrary(ggthemes)\n\npenguins %&gt;%\n  drop_na() %&gt;%\n  ggplot(aes(x = body_mass_g, y = bill_length_mm), color = species) +\n  geom_point(aes(color = species))+\n  geom_smooth(method = \"lm\", se = FALSE, aes(color = species)) +\n  scale_color_colorblind() +\n  theme_bw() +\n  labs(\n    x = \"Body Mass (g)\",\n    y = \"Flipper Length (mm)\",\n    color = \"Penguin Species\"\n  )"
+    "text": "Link to my GitHub Code\nI am learning how to do data science. This is built using a Quarto Website. This is a powerful tool in data science. It enables me to easily display code and output at my discretion. Below is an example of this in action.\n\npenguins %&gt;%\n  drop_na() %&gt;%\n  ggplot(aes(x = body_mass_g, y = bill_length_mm), color = species) +\n  geom_point(aes(color = species))+\n  geom_smooth(method = \"lm\", se = FALSE, aes(color = species)) +\n  scale_color_colorblind() +\n  theme_bw() +\n  labs(\n    x = \"Body Mass (g)\",\n    y = \"Flipper Length (mm)\",\n    color = \"Penguin Species\"\n  )"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\nThis is a project (or series of projects) created for MSCS 264 (Data Science 2) at St Olaf College. It contains a semseter’s worth of work and lots and lots of troubleshooting and polishing. I hope you enjoy."
+    "text": "About this site\nThis is a project (or series of projects) created for MSCS 264 (Data Science 2) at St Olaf College. It contains a semester’s worth of work and lots and lots of troubleshooting and polishing. I hope you enjoy."
   },
   {
     "objectID": "Map_Project.html",

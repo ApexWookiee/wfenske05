@@ -14,8 +14,6 @@ website:
       - sidebar:mini_project2
       - file: StatModeling_Final_Project.qmd
         text: "MN Twins"
-      - file: about.qmd
-        text: "About"
         
   sidebar:
     - id: mini_project
