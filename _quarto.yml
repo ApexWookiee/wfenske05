@@ -3,7 +3,6 @@ project:
   output-dir: docs
 
 website:
-  title: "Walter Fenske"
   navbar:
     background: primary
     search: true

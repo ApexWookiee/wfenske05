@@ -1,5 +1,5 @@
 ---
-title: "Twinning Success (Project From STAT 272)"
+title: "Project from STAT 272 (Statistical Modeling)"
 sidebar: false
 format: html
 editor: visual
