@@ -24,7 +24,6 @@ library(ggplot2)
 library(ggthemes)
 ```
 
-
 ```{r}
 #| echo: true
 #| message: false

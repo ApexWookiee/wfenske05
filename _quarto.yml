@@ -11,6 +11,7 @@ website:
         text: "Home"
       - sidebar:mini_project
       - sidebar:mini_project2
+      - sidebar:mini_project3
       - file: StatModeling_Final_Project.qmd
         text: "MN Twins"
         
@@ -25,7 +26,11 @@ website:
       title: "Mini Project 2"
       contents: 
         - Simulation.qmd
-
+        
+    - id: mini_project3
+      title: "Mini Project 3"
+      contents:
+        - String_data.qmd
 format:
   html:
     theme: zephyr

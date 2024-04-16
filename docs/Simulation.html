@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Walter Fenske - Secret Santa Simulation</title>
+<title>Secret Santa Simulation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,11 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Walter Fenske</span>
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -142,6 +137,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="./Simulation.html" rel="" target="">
  <span class="dropdown-text">Secret Santa Simulation</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mini-project-3" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Mini Project 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-mini-project-3">    
+        <li>
+    <a class="dropdown-item" href="./String_data.html" rel="" target="">
+ <span class="dropdown-text">2016 Election Tweets: Hillary vs Trump</span></a>
   </li>  
     </ul>
   </li>
@@ -335,13 +341,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#check our shuffled_tibbles</span></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">how_many_bad_tibbles</span>(shuffled_tibbles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1901</code></pre>
+<pre><code>[1] 1903</code></pre>
 </div>
 </div>
 </section>
 <section id="initial-testing-results" class="level1">
 <h1>Initial Testing Results</h1>
-<p>We can see that 1901 of our lineups had one or more instances of someone giving themselves a gift, which is nearly 2/3rds of all of our lineups.</p>
+<p>We can see that 1903 of our lineups had one or more instances of someone giving themselves a gift, which is nearly 2/3rds of all of our lineups.</p>
 </section>
 <section id="subset-of-good-lineups" class="level1">
 <h1>Subset of “Good” Lineups</h1>
@@ -366,10 +372,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>good_tibbles <span class="ot">&lt;-</span> <span class="fu">remove_bad_tibbles</span>(shuffled_tibbles) <span class="co">#store results in list</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(good_tibbles) <span class="co">#total number of tibbles that do not have matches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1099</code></pre>
+<pre><code>[1] 1097</code></pre>
 </div>
 </div>
-<p>We can see that we have simulated 1099 lineups without any matches. For our purposes, this is enough to perform the following analysis.</p>
+<p>We can see that we have simulated 1097 lineups without any matches. For our purposes, this is enough to perform the following analysis.</p>
 </section>
 <section id="analysis-of-good-lineups" class="level1">
 <h1>Analysis of “Good” Lineups</h1>
@@ -405,10 +411,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pairs_vector)<span class="sc">/</span><span class="fu">length</span>(good_tibbles)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5086442</code></pre>
+<pre><code>[1] 0.4585232</code></pre>
 </div>
 </div>
-<p>In our results, about 50.9% of the time we can expect that there will be 1 or more reciprocal pairs when creating Secret Santa lineups with 17 people. That is a higher proportion than I initially expected. In the future, I would like to investigate this phenomenon with varying group sizes to see how the frequency of reciprocal pairs changes.</p>
+<p>In our results, about 45.9% of the time we can expect that there will be 1 or more reciprocal pairs when creating Secret Santa lineups with 17 people. That is a higher proportion than I initially expected. In the future, I would like to investigate this phenomenon with varying group sizes to see how the frequency of reciprocal pairs changes.</p>
 <p><a href="https://github.com/ApexWookiee/wfenske05">Link to my GitHub Code</a></p>
 
 

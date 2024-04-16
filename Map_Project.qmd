@@ -52,7 +52,7 @@ group_by(region) %>%
   full_join(us_states, by = "region")
 ```
 
-The following map was created using a subset of data available [here](https://www.kaggle.com/code/abigaillarion/terrorist-attacks-in-united-states). The original data has information regarding terrorist attacks globally but I honed in on just the United States for this project. 
+The following map was created using a subset of data available [here](https://www.kaggle.com/code/abigaillarion/terrorist-attacks-in-united-states). The original data has information regarding terrorist attacks globally but I honed in on just the United States for this project.
 
 ```{r}
 #| echo: FALSE

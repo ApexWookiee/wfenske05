@@ -1,0 +1,193 @@
+---
+title: "2016 Election Tweets: Hillary vs Trump"
+sidebar: FALSE
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| echo: FALSE
+#| message: FALSE
+#| warning: FALSE
+
+# libraries and data set 
+library(tidyverse)
+library(tidytext)
+library(ggplot2)
+library(ggthemes)
+
+emotion_scale <- get_sentiments("afinn")
+tweets <- read_csv("tweets.csv")
+dictionary_merge <- read_csv("dictionary_merge.csv")
+dictionary_merge <- dictionary_merge %>%
+  rename("word" = a) %>%
+  distinct(word)
+```
+
+![](images/Hillary_trump.jpg){fig-align="center"}
+
+# Data
+
+The [data](https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets) in this tab is comprised of tweets from then presidential candidate Donald Trump and former Secretary of State Hillary Clinton. The tweets are from Jan 2016 to Sept 2016 and have much information available, such as the author, time/date information, whether or not it was a retweet, and of course, the tweet itself.
+
+# MAGA - Positive or Negative?
+
+"Make America Great Again," or MAGA, is a slogan Donald Trump used during his 2016 presidential campaign. It suggests a goal of returning America to past greatness, focusing on boosting the economy and strengthening security. However, the slogan has sparked controversy. Some people criticize MAGA, saying it looks back to a time when people were treated less fairly. This has made MAGA a divisive term, representing very different ideas about what America should be. 
+
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+set.seed(123)
+```
+
+This histogram then shows the distribution of the [AFINN scores](https://afit-r.github.io/sentiment_analysis) of all of the words from tweets that contained the phrase "MAGA". Each word is given a rating from -5 (worst connotation) to 5 (best connotation). For further information about AFINN, see the figure below the histogram, which has a few words from the AFINN data and their associated scores. 
+
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+#| results: hide
+# the following graph is the distribution of rating of words from tweets that contain "MAGA" in them. 
+
+tweets %>%
+  filter(str_detect(text, "[Mm][Aa][Gg][Aa]")) %>%
+  mutate(text = str_remove_all(text, "https?://[\\w/./?=&]+")) %>% # get rid of URLs
+  mutate(text = str_replace_all(text, "[^\\w\\s]", ""),# remove special characters
+         text = str_remove_all(text, "[\\r\\n]+")) %>% # remove newline characters
+  mutate(text = str_to_lower(text)) %>%
+  select(text) %>%
+  unnest_tokens(word, text) %>%
+  inner_join(emotion_scale, by = "word") %>% #match words with their AFINN score
+  ggplot(aes(x = value)) +
+  geom_histogram(binwidth = 0.5, fill = "firebrick3") +
+  scale_x_continuous(limits = c(-5, 5), breaks = seq(-5, 5, by = 1)) +
+  theme_bw() +
+  labs(
+    x = "AFINN Score",
+    y = "Count",
+    title = "Tweets Containing 'MAGA' "
+  )
+```
+
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+
+emotion_scale %>%
+  filter(value >= -3 & value <= 3 & value != 0) %>%
+  group_by(value) %>%
+  slice_sample(n = 1)
+```
+
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+
+# proportion of words capitalized in Hillary's tweets
+
+hillaryCapitals <- tweets %>%
+  filter(handle == "HillaryClinton") %>%
+  filter(str_detect(text, "\\b[A-Z]+\\b")) %>% # get tweets with capital words
+  mutate(
+    text = str_remove_all(text, "^(?=.*(NBC|CNN|MSNBC|NPR|ABC|CBS|CNBC)).*$"), #no news 
+    text = str_replace_all(text, "https?://[\\w/./?=&]+", ""), # no urls
+    text = str_replace_all(text, "[^\\w\\s]", ""), # no special characters
+    text = str_remove_all(text, "[\\r\\n]+"), # no newline characters
+    text_caps = str_extract_all(text, "\\b[A-Z]+\\b"), #  get all capital words
+    text_caps = sapply(text_caps, function(x) paste(x, collapse = " ")),
+    caps_length = str_length(text_caps)
+  ) %>%
+  select(text_caps, caps_length, text) %>%
+  filter(caps_length > 1) %>%  # get rid of 0 length capitals 
+  select(text_caps) %>%
+  mutate(text_caps = str_replace_all(text_caps, "\\b[A-Z]{1}\\b", "")) %>% #get rid of standalone capitals like I, A, etc. 
+  filter(str_detect(text_caps, "\\w")) %>%
+  mutate(text_caps = str_trim(text_caps), # remove whitespace
+         text_caps = str_to_lower(text_caps)) %>% # make lowercase for joining purposes
+  semi_join(dictionary_merge, join_by("text_caps" == "word")) %>% # check against english dictionary, remove non-english words, acronyms, etc. 
+  nrow()
+  
+hillaryTotal <- tweets %>%
+  filter(handle == "HillaryClinton") %>%
+  filter(str_detect(text, "\\b[A-Z]+\\b")) %>% # get tweets with capital words
+  mutate(
+    text = str_remove_all(text, "^(?=.*(NBC|CNN|MSNBC|NPR|ABC|CBS|CNBC)).*$"), #no news 
+    text = str_replace_all(text, "https?://[\\w/./?=&]+", ""), # no urls
+    text = str_replace_all(text, "[^\\w\\s]", ""), # no special characters
+    text = str_remove_all(text, "[\\r\\n]+"), # no newline characters
+  ) %>%
+  select(text) %>%
+  mutate(total_count = str_count(text, "\\b\\w*\\b")/2) %>%
+  summarise(
+    Hillary_Prop = sum(total_count)
+  )
+
+hillaryProp <- hillaryCapitals / hillaryTotal
+```
+
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+#| message: FALSE
+
+# proportion of words capitalized in Trump's tweets. 
+
+trumpCapitals <- tweets %>%
+  filter(handle == "realDonaldTrump") %>%
+  filter(str_detect(text, "\\b[A-Z]+\\b")) %>% # get tweets with capital words
+  mutate(
+    text = str_remove_all(text, "^(?=.*(NBC|CNN|MSNBC|NPR|ABC|CBS|CNBC)).*$"), #no news 
+    text = str_replace_all(text, "https?://[\\w/./?=&]+", ""), # no urls
+    text = str_replace_all(text, "[^\\w\\s]", ""), # no special characters
+    text = str_remove_all(text, "[\\r\\n]+"), # no newline characters
+    text_caps = str_extract_all(text, "\\b[A-Z]+\\b"), # get all capital words
+    text_caps = sapply(text_caps, function(x) paste(x, collapse = " ")),
+    caps_length = str_length(text_caps)
+  ) %>%
+  select(text_caps, caps_length, text) %>%
+  filter(caps_length > 1) %>%  # get rid of 0 length capitals 
+  select(text_caps) %>%
+  mutate(text_caps = str_replace_all(text_caps, "\\b[A-Z]{1}\\b", "")) %>% #get rid of standalone capitals like I, A, etc. 
+  filter(str_detect(text_caps, "\\w")) %>%
+  mutate(text_caps = str_trim(text_caps), # remove whitespace
+         text_caps = str_to_lower(text_caps)) %>% # make lowercase for joining purposes
+  semi_join(dictionary_merge, join_by("text_caps" == "word")) %>% # check against english dictionary, remove non-english words, acronyms, etc. 
+  nrow()
+
+trumpTotal <- tweets %>%
+  filter(handle == "realDonaldTrump") %>%
+  filter(str_detect(text, "\\b[A-Z]+\\b")) %>% # get tweets with capital words
+  mutate(
+    text = str_remove_all(text, "^(?=.*(NBC|CNN|MSNBC|NPR|ABC|CBS|CNBC)).*$"), #no news 
+    text = str_replace_all(text, "https?://[\\w/./?=&]+", ""), # no urls
+    text = str_replace_all(text, "[^\\w\\s]", ""), # no special characters
+    text = str_remove_all(text, "[\\r\\n]+"), # no newline characters
+  ) %>%
+  select(text) %>%
+  mutate(total_count = str_count(text, "\\b\\w*\\b")/2) %>%
+  summarise(
+    Trump_Prop = sum(total_count)
+  )
+
+trumpProp <- trumpCapitals / trumpTotal
+```
+
+# Capitalized Words
+
+Anyone who has ever come across even a few of Donald Trump's tweets will be familiar with his affinity for capital letters. In the context of this data, it makes sense to compare Trump's usage of capital letters to Hillary's usage. Before arriving at my final result, I had to not count words like "I", which are always capitalized, as well as abbreviations like "NC" for North Carolina. The following output is 
+
+```{r}
+#| echo: FALSE
+#| warning: FALSE
+
+trumpProp
+hillaryProp
+```
+
+These proportions are nearly identical, differing by not even a percentage point. This is an interesting result for sure, suggesting that perhaps Trump isn't as much of a loudmouth as people make him out to be (at least on Twitter). If I were to do further analysis, I would like to compare some metric tied to whether or not a tweet was a retweet or create a time vs frequency of words graph. 
+
+[Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)
