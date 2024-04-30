@@ -34,7 +34,7 @@ The [data](https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets) in th
 
 # MAGA - Positive or Negative?
 
-"Make America Great Again," or MAGA, is a slogan Donald Trump used during his 2016 presidential campaign. It suggests a goal of returning America to past greatness, focusing on boosting the economy and strengthening security. However, the slogan has sparked controversy. Some people criticize MAGA, saying it looks back to a time when people were treated less fairly. This has made MAGA a divisive term, representing very different ideas about what America should be. 
+"Make America Great Again," or MAGA, is a slogan Donald Trump used during his 2016 presidential campaign. It suggests a goal of returning America to past greatness, focusing on boosting the economy and strengthening security. However, the slogan has sparked controversy. Some people criticize MAGA, saying it looks back to a time when people were treated less fairly. This has made MAGA a divisive term, representing very different ideas about what America should be.
 
 ```{r}
 #| echo: FALSE
@@ -43,7 +43,7 @@ The [data](https://www.kaggle.com/datasets/benhamner/clinton-trump-tweets) in th
 set.seed(123)
 ```
 
-This histogram then shows the distribution of the [AFINN scores](https://afit-r.github.io/sentiment_analysis) of all of the words from tweets that contained the phrase "MAGA". Each word is given a rating from -5 (worst connotation) to 5 (best connotation). For further information about AFINN, see the figure below the histogram, which has a few words from the AFINN data and their associated scores. 
+This histogram then shows the distribution of the [AFINN scores](https://afit-r.github.io/sentiment_analysis) of all of the words from tweets that contained the phrase "MAGA". Each word is given a rating from -5 (worst connotation) to 5 (best connotation). For further information about AFINN, see the figure below the histogram, which has a few words from the AFINN data and their associated scores.
 
 ```{r}
 #| echo: FALSE
@@ -178,7 +178,7 @@ trumpProp <- trumpCapitals / trumpTotal
 
 # Capitalized Words
 
-Anyone who has ever come across even a few of Donald Trump's tweets will be familiar with his affinity for capital letters. In the context of this data, it makes sense to compare Trump's usage of capital letters to Hillary's usage. Before arriving at my final result, I had to not count words like "I", which are always capitalized, as well as abbreviations like "NC" for North Carolina. The following output is 
+Anyone who has ever come across even a few of Donald Trump's tweets will be familiar with his affinity for capital letters. In the context of this data, it makes sense to compare Trump's usage of capital letters to Hillary's usage. Before arriving at my final result, I had to not count words like "I", which are always capitalized, as well as abbreviations like "NC" for North Carolina. The following output is
 
 ```{r}
 #| echo: FALSE
@@ -188,6 +188,30 @@ trumpProp
 hillaryProp
 ```
 
-These proportions are nearly identical, differing by not even a percentage point. This is an interesting result for sure, suggesting that perhaps Trump isn't as much of a loudmouth as people make him out to be (at least on Twitter). If I were to do further analysis, I would like to compare some metric tied to whether or not a tweet was a retweet or create a time vs frequency of words graph. 
+These proportions are nearly identical, differing by not even a percentage point. This is an interesting result for sure, suggesting that perhaps Trump isn't as much of a loudmouth as people make him out to be (at least on Twitter). If I were to do further analysis, I would like to compare some metric tied to whether or not a tweet was a retweet or create a time vs frequency of words graph.
 
 [Link to my GitHub Code](https://github.com/ApexWookiee/wfenske05)
+
+```{r}
+tweets %>%
+  filter(handle == "realDonaldTrump") %>%
+  filter(str_detect(text, "\\b[A-Z]+\\b")) %>% # get tweets with capital words
+  mutate(
+    text = str_remove_all(text, "^(?=.*(NBC|CNN|MSNBC|NPR|ABC|CBS|CNBC)).*$"), # no news
+    text = str_replace_all(text, "https?://[\\w/./?=&]+", ""), # no urls
+    text = str_replace_all(text, "[^\\w\\s]", ""), # no special characters
+    text = str_replace_all(text, "[\\r\\n]+", ""), # no newline characters
+  ) %>%
+  select(text) %>%
+  unnest_tokens(word, text, to_lower = TRUE) %>%
+  anti_join(stop_words) %>%
+  semi_join(dictionary_merge) %>%
+  group_by(word) %>%
+  count() %>%
+  ungroup() %>%
+  arrange(desc(n)) %>%
+  head(100) %>%
+  select(word) %>%
+  write_csv("python_data2.csv")
+```
+

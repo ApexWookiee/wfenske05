@@ -1,0 +1,75 @@
+---
+title: R Tip of the Day
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Packages and data wrangling
+
+```{r}
+install.packages("rgl")
+library(rgl)
+library(palmerpenguins)
+library(tidyverse)
+library(tidyr)
+library(ggplot2)
+penguins <- penguins
+
+# get necessary vectors for plotting
+bill_length <- penguins$bill_length_mm
+bill_depth <- penguins$bill_depth_mm
+body_mass <- penguins$body_mass_g
+
+# assign a color to each species of penguin
+species_colors <- setNames(c("blue", "red", "green"), c("Adelie", "Chinstrap", "Gentoo"))
+colors <- species_colors[penguins$species]
+
+# assign a color to male/female penguins
+species_sex <- setNames(c("black", "green"), c("male", "female"))
+sexes <- species_sex[penguins$sex]
+```
+
+# Sample gg plots, 2D
+
+```{r}
+penguins %>%
+  drop_na() %>%
+  ggplot(aes(x = bill_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = sex)) +
+  scale_color_manual(values = c("male" = "black", "female" = "yellow")) +
+  theme_dark()
+
+penguins %>%
+  drop_na() %>%
+  ggplot(aes(x = bill_depth_mm, y = body_mass_g)) +
+  geom_point(aes(color = sex)) +
+  scale_color_manual(values = c("male" = "black", "female" = "yellow")) +
+  theme_dark()
+
+penguins %>%
+  drop_na() %>%
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = sex)) +
+  scale_color_manual(values = c("male" = "black", "female" = "yellow")) +
+  theme_dark()
+```
+
+# 3d Plots
+
+you may have noticed that as I rotated the cube, there are three distinct "pillars"... turns out, those are the species of penguin. 
+
+```{r}
+plot3d(bill_length, bill_depth, body_mass, col = sexes, size =3, type = "p")
+
+plot3d(bill_length, bill_depth, body_mass, col = colors, size =3, type = "p")
+```
+
+# plot Munga Whau Volcano
+
+```{r}
+persp3d(volcano, color = "red")
+```
+
+
+
